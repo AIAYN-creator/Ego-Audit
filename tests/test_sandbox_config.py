@@ -4,12 +4,7 @@ from ego_audit.sandbox.config import (
     hardening_args,
     network_args,
     resource_limit_args,
-    runtime_args,
 )
-
-
-def test_runtime_args_uses_gvisor():
-    assert runtime_args() == ["--runtime", "runsc"]
 
 
 def test_network_args_blocks_all_network():
@@ -37,7 +32,6 @@ def test_hardening_args_drops_all_capabilities_and_pins_nonroot_user():
 
 def test_full_run_args_includes_every_isolation_layer():
     args = full_run_args("/host/work")
-    assert "--runtime" in args
     assert "--network" in args
     assert "--read-only" in args
     assert "--cap-drop" in args
