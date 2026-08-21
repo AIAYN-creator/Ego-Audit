@@ -37,3 +37,14 @@ def test_full_run_args_includes_every_isolation_layer():
     assert "--cap-drop" in args
     assert "ego-audit-sandbox:latest" in args
     assert args[-1] == "/work/runner.py"
+
+
+def test_full_run_args_includes_container_name_when_given():
+    args = full_run_args("/host/work", container_name="my-container")
+    assert "--name" in args
+    assert "my-container" in args
+
+
+def test_full_run_args_omits_name_flag_when_not_given():
+    args = full_run_args("/host/work")
+    assert "--name" not in args

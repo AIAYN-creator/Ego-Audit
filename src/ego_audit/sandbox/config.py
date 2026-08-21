@@ -44,15 +44,19 @@ def full_run_args(
     entrypoint_script: str = "/work/runner.py",
     cpus: float = 1.0,
     memory_mb: int = 512,
+    container_name: str | None = None,
 ) -> list[str]:
     """Ensambla todas las capas de aislamiento para una invocacion de `docker run`.
 
     entrypoint_script es la ruta (dentro del contenedor) del script que la imagen
     ejecuta -- sandbox-05 copia runner.py a work_dir_host antes de lanzar esto,
-    donde queda montado como /work/runner.py.
+    donde queda montado como /work/runner.py. container_name (sandbox-06) permite
+    identificar el contenedor para poder matarlo explicitamente si hay timeout.
     """
+    name_args = ["--name", container_name] if container_name else []
     return (
         ["run", "--rm"]
+        + name_args
         + network_args()
         + resource_limit_args(cpus=cpus, memory_mb=memory_mb)
         + filesystem_args(work_dir_host)
