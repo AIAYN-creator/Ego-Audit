@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Auditor de estrategias de trading: sandbox aislado, walk-forward validation, desglose bruto a neto frente a buy-and-hold"
 requires-python = ">=3.10"
 license = {text = "MIT"}
-dependencies = ["yfinance"]
+dependencies = ["yfinance", "platformdirs"]
 
 [project.optional-dependencies]
 dev = ["pytest"]
@@ -15,3 +15,8 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.pytest.ini_options]
+markers = [
+    "slow: tests que hacen llamadas de red reales (yfinance, docker), mas lentos",
+]
