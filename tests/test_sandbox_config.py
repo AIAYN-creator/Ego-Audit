@@ -35,4 +35,5 @@ def test_full_run_args_includes_every_isolation_layer():
     assert "--network" in args
     assert "--read-only" in args
     assert "--cap-drop" in args
-    assert args[-1] == "ego-audit-sandbox:latest"
+    assert "ego-audit-sandbox:latest" in args
+    assert args[-1] == "/work/runner.py"

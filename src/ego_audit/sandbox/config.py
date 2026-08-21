@@ -39,13 +39,23 @@ def hardening_args() -> list[str]:
     ]
 
 
-def full_run_args(work_dir_host: str, cpus: float = 1.0, memory_mb: int = 512) -> list[str]:
-    """Ensambla todas las capas de aislamiento para una invocacion de `docker run`."""
+def full_run_args(
+    work_dir_host: str,
+    entrypoint_script: str = "/work/runner.py",
+    cpus: float = 1.0,
+    memory_mb: int = 512,
+) -> list[str]:
+    """Ensambla todas las capas de aislamiento para una invocacion de `docker run`.
+
+    entrypoint_script es la ruta (dentro del contenedor) del script que la imagen
+    ejecuta -- sandbox-05 copia runner.py a work_dir_host antes de lanzar esto,
+    donde queda montado como /work/runner.py.
+    """
     return (
         ["run", "--rm"]
         + network_args()
         + resource_limit_args(cpus=cpus, memory_mb=memory_mb)
         + filesystem_args(work_dir_host)
         + hardening_args()
-        + [SANDBOX_IMAGE]
+        + [SANDBOX_IMAGE, entrypoint_script]
     )
