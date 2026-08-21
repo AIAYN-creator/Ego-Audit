@@ -1,0 +1,17 @@
+[project]
+name = "ego-audit"
+version = "0.1.0"
+description = "Auditor de estrategias de trading: sandbox aislado, walk-forward validation, desglose bruto a neto frente a buy-and-hold"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = ["yfinance"]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
