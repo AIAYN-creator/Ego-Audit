@@ -6,7 +6,7 @@ Ego Audit audita estrategias de trading escritas en Python: las ejecuta en un sa
 
 No predice el mercado ni compite con él. Expone honestamente cuánto de la rentabilidad "de laboratorio" de una estrategia sobrevive al contacto con la realidad: overfitting, fricción de ejecución, validación fuera de muestra.
 
-> Proyecto en desarrollo activo. Todavía no hay una versión instalable ni un ejemplo funcionando — ver Estado más abajo.
+> Proyecto en desarrollo activo. El pipeline completo ya funciona con datos reales (ver Estado), pero todavía no hay una versión instalable — falta la CLI.
 
 ## Para quién es esto
 
@@ -36,10 +36,10 @@ En desarrollo activo, por fases:
 - [x] **Capa de datos** — descarga vía yfinance, universo de tickers, cache local, alineación de fechas entre tickers.
 - [x] **Walk-forward validation** — ventanas deslizantes + motor de contabilidad en Rust, verificado de principio a fin.
 - [x] **Modelo de comisiones y slippage** — bruto → neto ya calculable sobre datos reales.
-- [ ] **Output visual** — el desglose bruto → neto, la pieza de producto más importante.
-- [ ] **CLI.**
+- [x] **Output visual** — reporte HTML autocontenido con el desglose bruto → neto vs. buy-and-hold. Probado con un ejemplo real (media móvil 20d sobre SPY, 2022-2024): bruto +14%, neto +5%, buy-and-hold +19% — exactamente el tipo de resultado que la herramienta existe para exponer.
+- [ ] **CLI** — todo lo anterior funciona encadenado a mano desde Python; falta el comando de terminal y el empaquetado pip para que lo pueda usar alguien que no sea el autor.
 
-Todavía no hay una versión instalable ni un ejemplo end-to-end funcionando.
+El pipeline completo (datos → sandbox → walk-forward → costes → output) ya funciona de principio a fin con datos reales. Todavía no hay una versión instalable vía pip.
 
 ## Líneas futuras (v2, no v1)
 
