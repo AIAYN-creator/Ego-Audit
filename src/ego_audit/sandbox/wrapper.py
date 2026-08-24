@@ -47,6 +47,12 @@ def run_strategy_in_sandbox(
             result = subprocess.run(
                 args, capture_output=True, text=True, timeout=timeout_seconds
             )
+        except FileNotFoundError as e:
+            raise RuntimeError(
+                "No se encontro el comando 'docker'. Instala Docker Desktop "
+                "(https://docs.docker.com/get-docker/) y verifica que 'docker' "
+                "este en el PATH antes de auditar una estrategia."
+            ) from e
         except subprocess.TimeoutExpired:
             try:
                 subprocess.run(

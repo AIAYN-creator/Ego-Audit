@@ -68,6 +68,15 @@ def test_borra_el_directorio_de_trabajo_al_terminar(estrategia_path):
     assert not seen_work_dir["path"].exists()
 
 
+def test_docker_no_instalado_da_mensaje_claro_no_traceback_crudo(estrategia_path):
+    with patch(
+        "ego_audit.sandbox.wrapper.subprocess.run",
+        side_effect=FileNotFoundError("El sistema no puede encontrar el archivo especificado"),
+    ):
+        with pytest.raises(RuntimeError, match="Docker Desktop"):
+            run_strategy_in_sandbox(_fake_datos(), estrategia_path)
+
+
 def test_lanza_error_si_docker_termina_con_codigo_no_cero(estrategia_path):
     def fake_docker_run(args, capture_output, text, timeout=None):
         return subprocess.CompletedProcess(args=args, returncode=1, stdout="", stderr="boom")

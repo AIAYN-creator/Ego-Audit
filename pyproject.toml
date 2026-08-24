@@ -6,6 +6,9 @@ requires-python = ">=3.10"
 license = {text = "MIT"}
 dependencies = ["yfinance", "platformdirs", "matplotlib"]
 
+[project.scripts]
+ego-audit = "ego_audit.cli:main"
+
 [project.optional-dependencies]
 dev = ["pytest"]
 
