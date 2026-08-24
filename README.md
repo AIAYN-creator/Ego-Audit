@@ -6,6 +6,18 @@ Ego Audit audita estrategias de trading escritas en Python: las ejecuta en un sa
 
 No predice el mercado ni compite con él. Expone honestamente cuánto de la rentabilidad "de laboratorio" de una estrategia sobrevive al contacto con la realidad: overfitting, fricción de ejecución, validación fuera de muestra.
 
+## El gancho es el propio producto
+
+Media móvil de 20 días sobre SPY, 2022–2024 — una estrategia razonable, nada de paja:
+
+![Bruto vs. neto vs. buy-and-hold](docs/demo-desglose.png)
+
+| | Bruto | Tras comisiones | Neto | Buy & hold |
+|---|---|---|---|---|
+| Resultado | **+14,1%** | +8,1% | **+5,3%** | **+19,2%** |
+
+Bruto parece decente. Tras comisiones y slippage se queda en una cuarta parte de eso. Y aun así pierde contra no hacer absolutamente nada. Esa es la pregunta que Ego Audit hace por ti antes de que te la haga el mercado.
+
 > Proyecto en desarrollo activo. `pip install -e .` ya instala el comando `ego-audit` de verdad — ver Estado más abajo.
 
 ## Instalación (desarrollo)
@@ -47,7 +59,7 @@ En desarrollo activo, por fases:
 - [x] **Modelo de comisiones y slippage** — bruto → neto ya calculable sobre datos reales.
 - [x] **Output visual** — reporte HTML autocontenido con el desglose bruto → neto vs. buy-and-hold. Probado con un ejemplo real (media móvil 20d sobre SPY, 2022-2024): bruto +14%, neto +5%, buy-and-hold +19% — exactamente el tipo de resultado que la herramienta existe para exponer.
 - [x] **CLI** — `ego-audit run`, instalable de verdad vía `pip install -e .`. Probado con una ejecución real (ticker AAPL): llega hasta el sandbox y falla con un mensaje claro si no hay Docker, no con un traceback.
-- [ ] **Lanzamiento** — falta pulir el README con el gancho definitivo y las instrucciones de contribución.
+- [x] **Lanzamiento** — README con el gancho real (arriba del todo), LICENSE, instrucciones de instalación y contribución.
 
 El pipeline completo (datos → sandbox → walk-forward → costes → output) ya funciona de principio a fin con datos reales, instalado como cualquier paquete de pip.
 
@@ -60,6 +72,19 @@ Ideas anotadas a propósito, no construidas todavía — cada una tiene una raz�
 - **Aislamiento más fuerte del sandbox (gVisor)** — v1 usa Docker con hardening en capas, sin gVisor, para no exigir WSL2/Docker Engine nativo a quien mantiene o instala el proyecto. Se reabre si el proyecto gana tracción real.
 - **Ejecución client-side (Pyodide/WASM)** — eliminaría el riesgo de infraestructura del sandbox por completo, a cambio de restringir qué librerías Python puede usar quien escribe la estrategia.
 - **Optimización automática de hiperparámetros** — deliberadamente descartada, no solo pospuesta: induciría el mismo overfitting que la herramienta existe para exponer.
+
+## Contribuir
+
+```bash
+git clone https://github.com/AIAYN-creator/Ego-Audit.git
+cd Ego-Audit
+pip install -e ".[dev]"
+pytest -m "not slow"   # rapido, sin red real
+pytest -m slow         # incluye llamadas reales a yfinance y al motor Rust
+pytest                 # todo lo anterior junto -- lo que necesita Docker se salta solo
+```
+
+PRs bienvenidas. Antes de mandar una: que los tests pasen, y si añades algo no obvio, que quede documentado el *por qué*, no solo el qué — es el estilo que sigue todo el proyecto.
 
 ## Licencia
 
