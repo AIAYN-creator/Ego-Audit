@@ -1,0 +1,22 @@
+<svg viewBox="0 0 440 130" xmlns="http://www.w3.org/2000/svg">
+  <title>Ego Audit</title>
+  <defs>
+    <clipPath id="lens-clip-wordmark">
+      <circle cx="50" cy="50" r="30" />
+    </clipPath>
+  </defs>
+
+  <line x1="8" y1="92" x2="120" y2="12" stroke="#2a78d6" stroke-width="4"
+        stroke-dasharray="7 6" stroke-linecap="round" />
+  <circle cx="50" cy="50" r="32" fill="#fcfcfb" stroke="#0b0b0b" stroke-width="6" />
+  <polyline points="20,58 33,66 46,52 59,61 74,44" fill="none"
+            stroke="#d03b3b" stroke-width="4" stroke-linecap="round"
+            stroke-linejoin="round" clip-path="url(#lens-clip-wordmark)" />
+  <line x1="73" y1="73" x2="108" y2="108" stroke="#0b0b0b" stroke-width="9"
+        stroke-linecap="round" />
+
+  <text x="150" y="62" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif"
+        font-size="42" font-weight="700" fill="#0b0b0b">EGO AUDIT</text>
+  <text x="150" y="90" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif"
+        font-size="16" fill="#52514e">el auditor de egos para bots de trading</text>
+</svg>

@@ -1,0 +1,24 @@
+<svg viewBox="0 0 130 130" xmlns="http://www.w3.org/2000/svg">
+  <title>Ego Audit</title>
+  <defs>
+    <clipPath id="lens-clip-mark">
+      <circle cx="50" cy="50" r="30" />
+    </clipPath>
+  </defs>
+
+  <!-- "bruto": la reclamación confiada, visible por fuera -->
+  <line x1="8" y1="92" x2="120" y2="12" stroke="#2a78d6" stroke-width="4"
+        stroke-dasharray="7 6" stroke-linecap="round" />
+
+  <!-- lente: oculta lo que hay detrás dentro del círculo -->
+  <circle cx="50" cy="50" r="32" fill="#fcfcfb" stroke="#0b0b0b" stroke-width="6" />
+
+  <!-- "neto": la verdad, solo visible al mirar de cerca -->
+  <polyline points="20,58 33,66 46,52 59,61 74,44" fill="none"
+            stroke="#d03b3b" stroke-width="4" stroke-linecap="round"
+            stroke-linejoin="round" clip-path="url(#lens-clip-mark)" />
+
+  <!-- mango de la lupa -->
+  <line x1="73" y1="73" x2="108" y2="108" stroke="#0b0b0b" stroke-width="9"
+        stroke-linecap="round" />
+</svg>

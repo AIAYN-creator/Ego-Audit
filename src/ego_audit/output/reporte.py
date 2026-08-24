@@ -9,11 +9,13 @@ matplotlib.use("Agg")  # sin backend interactivo -- solo generar la imagen
 import matplotlib.pyplot as plt
 import pandas as pd
 
+# Paleta validada en estetica-01-paleta-colores (docs/paleta.md) -- no son
+# los colores por defecto de matplotlib, ver esa card para el porque.
 _ESTILOS = {
-    "bruto": {"color": "tab:blue", "linestyle": "--", "label": "Bruto"},
-    "tras_comisiones": {"color": "tab:orange", "linestyle": ":", "label": "Tras comisiones"},
-    "neto": {"color": "tab:red", "linewidth": 2, "label": "Neto"},
-    "buy_and_hold": {"color": "tab:gray", "linewidth": 2, "label": "Buy & hold"},
+    "bruto": {"color": "#2a78d6", "linestyle": "--", "label": "Bruto"},
+    "tras_comisiones": {"color": "#1baf7a", "linestyle": ":", "label": "Tras comisiones"},
+    "neto": {"color": "#eb6834", "linewidth": 2, "label": "Neto"},
+    "buy_and_hold": {"color": "#898781", "linewidth": 2, "label": "Buy & hold"},
 }
 
 

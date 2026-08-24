@@ -1,4 +1,4 @@
-# Ego Audit
+<img src="docs/logo-wordmark.svg" alt="Ego Audit" width="380">
 
 **El auditor de egos para bots de trading.**
 
