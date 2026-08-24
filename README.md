@@ -29,7 +29,17 @@ Perfil tech/dev que construye (o quiere construir) bots de inversión en bolsa o
 
 ## Estado
 
-Scaffolding inicial. La construcción sigue un proceso por fases, empezando por las decisiones de arquitectura (motor de backtest, contrato de `estrategia()`, estructura del sandbox) antes de implementar nada.
+En desarrollo activo, por fases:
+
+- [x] **Arquitectura decidida** — contrato de `estrategia()`, motor de contabilidad (Rust + PyO3), estructura del sandbox.
+- [x] **Sandbox de ejecución aislada** — Docker con hardening (sin red saliente, límites de CPU/memoria, filesystem read-only, sin privilegios).
+- [x] **Capa de datos** — descarga vía yfinance, universo de tickers, cache local, alineación de fechas entre tickers.
+- [ ] **Walk-forward validation** — motor de ventanas deslizantes y motor de contabilidad (Rust) ya funcionando; falta cerrar la agregación final de resultados.
+- [ ] **Modelo de comisiones y slippage.**
+- [ ] **Output visual** — el desglose bruto → neto, la pieza de producto más importante.
+- [ ] **CLI.**
+
+Todavía no hay una versión instalable ni un ejemplo end-to-end funcionando.
 
 ## Licencia
 
