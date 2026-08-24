@@ -6,7 +6,7 @@ Ego Audit audita estrategias de trading escritas en Python: las ejecuta en un sa
 
 No predice el mercado ni compite con él. Expone honestamente cuánto de la rentabilidad "de laboratorio" de una estrategia sobrevive al contacto con la realidad: overfitting, fricción de ejecución, validación fuera de muestra.
 
-## El gancho es el propio producto
+## Un ejemplo real
 
 Media móvil de 20 días sobre SPY, 2022–2024 — una estrategia razonable, nada de paja:
 
