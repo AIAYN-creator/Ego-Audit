@@ -63,7 +63,7 @@ En desarrollo activo, por fases:
 
 El pipeline completo (datos → sandbox → walk-forward → costes → output) ya funciona de principio a fin con datos reales, instalado como cualquier paquete de pip.
 
-## Líneas futuras (v2, no v1)
+## Líneas futuras (v2)
 
 Ideas anotadas a propósito, no construidas todavía — cada una tiene una razón concreta para esperar, no es solo "no ha dado tiempo":
 
